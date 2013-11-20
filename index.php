@@ -155,9 +155,9 @@ $app->notFound(function () use ($app) {
 });
 
 // Metric list
-$app->get('/metrics(/)', function() use ($app) {
-    $app->render(200, \Metric::Available());
-});
+// $app->get('/metrics(/)', function() use ($app) {
+//     $app->render(200, \Metric::Available());
+// });
 
 // Metrics
 $app->get('/metrics/:metric(/:param)', function($metric, $param = false) use ($app) {
