@@ -34,7 +34,16 @@ abstract class Metric
         {
             return new $class;
         }
-        throw new Exception("Metric {$metric} not supported", 400);
+        throw new Exception("Metric '{$metric}' not supported", 400);
+    }
+
+    static public function Available()
+    {
+        return array(
+                'load',
+                'uptime',
+                'disk'
+            );
     }
 
     abstract public function getData($param = false);
@@ -73,16 +82,63 @@ class Metric_Uptime extends Metric
     }
 }
 
-class Metric_Disk extends Metric
+class Metric_Ram extends Metric
 {
     public function getData($param = false)
     {
+        if (false == ($data = file_get_contents('/proc/meminfo')))
+        {
+            throw new Exception("Unable to get memory info");
+        }
+
+        $data = static::_parseMeminfo($data);
+
         return array(
-                'disk' => $param,
-                'free' => 100
-            );
+            "total" => $data['MemTotal'],
+            "free" => $data['MemFree'] + $data['Buffers'] + $data['Cached'],
+            "used" => $data['MemTotal'] - ($data['MemFree'] + $data['Buffers'] + $data['Cached']),
+            "perc_free" => ($data['MemFree'] + $data['Buffers'] + $data['Cached']) / $data['MemTotal'] * 100,
+            "swap_total" => $data['SwapTotal'],
+            "swap_free" => $data['SwapFree'],
+            "swap_perc_free" => $data['SwapFree'] / $data['SwapTotal'] * 100,
+        );
+    }
+
+    protected function _parseMeminfo($raw)
+    {
+        $raw    = explode("\n", trim($raw));
+        $data   = array();
+        foreach ($raw as $line)
+        {
+            list($label, $value, $unit) = preg_split("#\s+#", $line);
+            $label = preg_replace('#[^A-z]+#', '', $label);
+            $data[$label] = static::_toBytes($unit, $value);
+        }
+        return $data;
+    }
+
+    protected function _toBytes($unit, $value)
+    {
+        switch ($unit)
+        {
+            case 'kB':
+                return $value * 1024;
+            case 'B':
+                return $value;
+        }
     }
 }
+
+// class Metric_Disk extends Metric
+// {
+//     public function getData($param = false)
+//     {
+//         return array(
+//                 'disk' => $param,
+//                 'free' => 100
+//             );
+//     }
+// }
 
 $app = new \Slim\Slim(array(
         'view'      => new \Json_View(),
@@ -98,9 +154,17 @@ $app->notFound(function () use ($app) {
     $app->render(404, array("Bad request"));
 });
 
+// Metric list
+$app->get('/metrics(/)', function() use ($app) {
+    $app->render(200, \Metric::Available());
+});
+
+// Metrics
 $app->get('/metrics/:metric(/:param)', function($metric, $param = false) use ($app) {
     $obj = \Metric::Factory($metric);
     $app->render(200, $obj->getData($param));
 });
+
+
 
 $app->run();
