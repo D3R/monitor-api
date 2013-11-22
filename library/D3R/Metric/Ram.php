@@ -30,8 +30,11 @@ class Ram extends Base
         $data   = array();
         foreach ($raw as $line)
         {
-            list($label, $value, $unit) = preg_split("#\s+#", $line);
-            $label = preg_replace('#[^A-z]+#', '', $label);
+            $line   = preg_split("#\s+#", $line);
+            $label  = $line[0];
+            $value  = $line[1];
+            $unit   = (isset($line[2]) ? $line[2] : 'b');
+            $label  = preg_replace('#[^A-z]+#', '', $label);
             $data[$label] = static::_toBytes($unit, $value);
         }
         return $data;
