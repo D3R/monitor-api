@@ -11,17 +11,8 @@ abstract class Base
         {
             return new $class;
         }
-        throw new \Exception("Metric '{$metric}' not supported", 400);
+        throw new \Exception("Invalid metric {$metric}", 400);
     }
-
-    // static public function Available()
-    // {
-    //     return array(
-    //             'load',
-    //             'uptime',
-    //             'disk'
-    //         );
-    // }
 
     abstract public function getData();
 }

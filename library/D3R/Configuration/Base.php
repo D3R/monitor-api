@@ -11,7 +11,7 @@ abstract class Base
         {
             return new $class;
         }
-        throw new \Exception("Metric '{$metric}' not supported", 400);
+        throw new \Exception("Invalid configuration {$metric}", 400);
     }
 
     abstract public function getData();
