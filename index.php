@@ -16,8 +16,9 @@ $app->error(function (\Exception $ex) use ($app) {
     $app->render($ex->getCode(), array($ex->getMessage()));
 });
 
+// Be a bit aggressive with 404s - send back 400 Bad Request
 $app->notFound(function () use ($app) {
-    $app->render(404, array("Bad request"));
+    $app->render(400, array("Bad request"));
 });
 
 $app->get('/:component/:metric', function($component, $metric) use ($app) {
