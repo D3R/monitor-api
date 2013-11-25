@@ -1,4 +1,6 @@
 config/config.php
+dpkg/build
+dpkg/package
 
 composer.phar
 vendor/

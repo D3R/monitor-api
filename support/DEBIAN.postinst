@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+
+if [ -d /clients/etc/nginx-sites ]; then
+    echo "Symlinking monitor virtual host"
+    ln -s /usr/lib/d3r-monitor-api/virtualhost.conf /clients/etc/nginx-sites/d3r-monitor-api.conf
+
+    echo "** Please restart nginx after installation to activate vhost"
+else
+    echo "Not symlinking vhost - /clients/etc/nginx-sites not found"
+fi

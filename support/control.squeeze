@@ -1,0 +1,10 @@
+Package: d3r-monitor-api
+Version: %VERSION%-squeeze1
+Section: main
+Priority: optional
+Architecture: all
+Installed-Size:
+Maintainer: D3R Ltd <team@d3r.com>
+Description: Simple API for server monitoring data
+ This package provides a simple php based REST API for server monitoring data
+ 
