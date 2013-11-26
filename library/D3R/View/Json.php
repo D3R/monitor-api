@@ -12,6 +12,7 @@ class Json extends \Slim\View
 
         $body = array(
                 'version'   => API_VERSION,
+                'timestamp' => time(),
                 'status'    => intval($status),
                 'data'      => $this->all()
             );
