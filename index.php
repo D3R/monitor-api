@@ -11,6 +11,7 @@ $app = new \Slim\Slim(array(
 );
 
 $app->add(new \D3R\Middleware\HttpBasicAuth(USERNAME, PASSWORD, REALM));
+$app->add(new \D3R\Middleware\Jsonp());
 
 $app->error(function (\Exception $ex) use ($app) {
     $app->render($ex->getCode(), array($ex->getMessage()));

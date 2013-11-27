@@ -17,9 +17,9 @@ class Json extends \Slim\View
                 'data'      => $this->all()
             );
 
+        $app->contentType('application/json');
         $app->response()->status($status);
-        $app->response()->header('Content-Type', 'application/json');
-        $app->response()->body(json_encode($body) . "\n");
+        $app->response()->body(json_encode($body));
 
         $app->stop();
     }
