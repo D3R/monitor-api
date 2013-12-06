@@ -34,7 +34,7 @@ $app->get('/:component/:metric', function($component, $metric) use ($app) {
         throw new \Exception("Invalid component", 400);
     }
 
-    $obj = $class::Factory($metric);
+    $obj = $class::Factory($metric, $app->request);
     $app->render(200, $obj->getData());
 });
 
