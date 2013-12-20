@@ -22,19 +22,19 @@ $app->notFound(function () use ($app) {
     $app->render(400, array("Bad request"));
 });
 
-$app->get('/:component/:metric', function($component, $metric) use ($app) {
-    foreach (array('component', 'metric') as $variable)
+$app->get('/:module/:component', function($module, $component) use ($app) {
+    foreach (array('module', 'component') as $variable)
     {
         $$variable = ucfirst(strtolower($$variable));
     }
-    $class = '\D3R\\' . $component . '\Base';
+    $class = '\D3R\\' . $module . '\Base';
 
     if (!class_exists($class))
     {
-        throw new \Exception("Invalid component", 400);
+        throw new \Exception("Invalid module", 400);
     }
 
-    $obj = $class::Factory($metric, $app->request);
+    $obj = $class::Factory($component, $app->request);
     $app->render(200, $obj->getData());
 });
 
