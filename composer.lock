@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "47be7eefab514a1d278423c128151f1c",
+    "hash": "b4672abd9a5bf85e8970c604d5a76e39",
     "packages": [
         {
             "name": "entomb/slim-json-api",
@@ -11,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/entomb/slim-json-api.git",
-                "reference": "ed597a4036d1ee2f1643a8363d3f712ce5cb380f"
+                "reference": "1d4531499a42af085157796e41afdb0415eceff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entomb/slim-json-api/zipball/ed597a4036d1ee2f1643a8363d3f712ce5cb380f",
-                "reference": "ed597a4036d1ee2f1643a8363d3f712ce5cb380f",
+                "url": "https://api.github.com/repos/entomb/slim-json-api/zipball/1d4531499a42af085157796e41afdb0415eceff6",
+                "reference": "1d4531499a42af085157796e41afdb0415eceff6",
                 "shasum": ""
             },
             "require": {
@@ -49,25 +50,27 @@
                 "slim",
                 "view"
             ],
-            "time": "2013-11-13 17:19:43"
+            "time": "2014-08-25 12:39:35"
         },
         {
             "name": "slim/slim",
-            "version": "2.3.5",
+            "version": "2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeguy/Slim.git",
-                "reference": "3dec4f9ee2e9c204a9f334afd72abc174c1b792e"
+                "reference": "4906b77a07c7bd6ff1a99aea903e940a2d4fa106"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeguy/Slim/zipball/3dec4f9ee2e9c204a9f334afd72abc174c1b792e",
-                "reference": "3dec4f9ee2e9c204a9f334afd72abc174c1b792e",
+                "url": "https://api.github.com/repos/codeguy/Slim/zipball/4906b77a07c7bd6ff1a99aea903e940a2d4fa106",
+                "reference": "4906b77a07c7bd6ff1a99aea903e940a2d4fa106",
                 "shasum": ""
             },
             "require": {
-                "ext-mcrypt": "*",
                 "php": ">=5.3.0"
+            },
+            "suggest": {
+                "ext-mcrypt": "Required for HTTP cookie encryption"
             },
             "type": "library",
             "autoload": {
@@ -93,23 +96,165 @@
                 "rest",
                 "router"
             ],
-            "time": "2013-10-31 02:05:09"
+            "time": "2014-04-05 18:33:59"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v2.5.6",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console.git",
+                "reference": "6f177fca24200a5b97aef5ce7a5c98124a0f0db0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/6f177fca24200a5b97aef5ce7a5c98124a0f0db0",
+                "reference": "6f177fca24200a5b97aef5ce7a5c98124a0f0db0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/event-dispatcher": "~2.1"
+            },
+            "suggest": {
+                "psr/log": "For using the console logger",
+                "symfony/event-dispatcher": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-10-05 13:57:04"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "v2.5.6",
+            "target-dir": "Symfony/Component/Finder",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Finder.git",
+                "reference": "cf66df4e783e6aade319b273c9bcf9e42aa9b10f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/cf66df4e783e6aade319b273c9bcf9e42aa9b10f",
+                "reference": "cf66df4e783e6aade319b273c9bcf9e42aa9b10f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Finder\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Finder Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-10-01 05:50:18"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v2.5.6",
+            "target-dir": "Symfony/Component/Process",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process.git",
+                "reference": "9bbacbb3a7a27b17c0d51e2f126f59e0e588ad3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/9bbacbb3a7a27b17c0d51e2f126f59e0e588ad3a",
+                "reference": "9bbacbb3a7a27b17c0d51e2f126f59e0e588ad3a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Process\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-10-01 05:50:18"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "entomb/slim-json-api": 20
     },
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "prefer-stable": false,
+    "platform": [],
+    "platform-dev": []
 }

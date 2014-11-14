@@ -1,0 +1,19 @@
+<?php
+require(__DIR__ . '/../vendor/autoload.php');
+
+use D3R\Monitor\Compiler;
+
+error_reporting(-1);
+ini_set('display_errors', 1);
+
+$pharName = './d3r-monitor-api.phar';
+
+try {
+    $compiler = new Compiler();
+    if (false === $compiler->compile('./d3r-monitor-api.phar', $forceCompile)) {
+        throw new Exception('Compilation failed');
+    }
+} catch (\Exception $e) {
+    echo 'Exception: ['.get_class($e).'] '.$e->getMessage().' at '.$e->getFile().':'.$e->getLine() . "\n";
+    exit(1);
+}

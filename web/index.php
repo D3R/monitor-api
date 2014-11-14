@@ -1,10 +1,14 @@
 <?php
-require('vendor/autoload.php');
-// require('library/autoload.php');
+require('../vendor/autoload.php');
 
 define("API_VERSION", 1);
 // require('config/config.php');
 
+if (!isset($_SERVER['PATH_INFO'])) {
+    $_SERVER['PATH_INFO'] = $_SERVER['REQUEST_URI'];
+}
+
+// var_dump($_SERVER); exit;
 $app = new \Slim\Slim(array(
         'view'      => new \D3R\Monitor\View\Json(),
         'debug'     => false
