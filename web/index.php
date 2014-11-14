@@ -2,20 +2,22 @@
 require('../vendor/autoload.php');
 
 define("API_VERSION", 1);
-// require('config/config.php');
 
-if (!isset($_SERVER['PATH_INFO'])) {
-    $_SERVER['PATH_INFO'] = $_SERVER['REQUEST_URI'];
+if (Phar::running()) {
+    $_SERVER['PATH_INFO']   = $_SERVER['REQUEST_URI'];
     $_SERVER['SCRIPT_NAME'] = basename(Phar::running(false));
 }
 
 $app = new \Slim\Slim(array(
-        'view'      => new \D3R\Monitor\View\Json(),
-        'debug'     => false
+        'view'        => new \D3R\Monitor\View\Json(),
+        'debug'       => false,
+        'log.level'   => \Slim\Log::DEBUG,
+        'log.enabled' => true,
     )
 );
 
 $app->add(new \D3R\Monitor\Middleware\Jsonp());
+$app->add(new \D3R\Monitor\Middleware\Clf());
 
 $app->error(function (\Exception $ex) use ($app) {
     $app->render($ex->getCode(), array($ex->getMessage()));
