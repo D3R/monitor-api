@@ -19,6 +19,7 @@
         "entomb/slim-json-api": "dev-master",
         "symfony/console": "2.5.*",
         "symfony/finder": "2.5.*",
-        "symfony/process": "2.5.*"
+        "symfony/process": "2.5.*",
+        "monolog/monolog": "~1.11"
     }
 }
