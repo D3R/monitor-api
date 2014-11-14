@@ -1,6 +1,6 @@
 <?php
 
-namespace D3R\Metric;
+namespace D3R\Monitor\Metric;
 
 class Uptime extends Base
 {
@@ -11,7 +11,7 @@ class Uptime extends Base
         {
             throw new Exception("Unable to get uptime");
         }
-        
+
         list($all, $idle) = explode(" ", trim($uptime), 2);
         return array(
             'since_boot' => $all,

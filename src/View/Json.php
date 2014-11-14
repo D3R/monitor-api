@@ -1,8 +1,8 @@
 <?php
 
-namespace D3R\View;
+namespace D3R\Monitor\View;
 
-class Json extends \Slim\View 
+class Json extends \Slim\View
 {
     public function render($status)
     {

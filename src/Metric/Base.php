@@ -1,12 +1,12 @@
 <?php
 
-namespace D3R\Metric;
+namespace D3R\Monitor\Metric;
 
 abstract class Base
 {
     static public function Factory($metric, $request)
     {
-        $class = "\\D3R\\Metric\\" . ucfirst(strtolower($metric));
+        $class = "\\D3R\\Monitor\\Metric\\" . ucfirst(strtolower($metric));
         if (class_exists($class))
         {
             $obj = new $class;

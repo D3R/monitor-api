@@ -1,17 +1,17 @@
 <?php
 require('vendor/autoload.php');
-require('library/autoload.php');
+// require('library/autoload.php');
 
-require('config/config.php');
+define("API_VERSION", 1);
+// require('config/config.php');
 
 $app = new \Slim\Slim(array(
-        'view'      => new \D3R\View\Json(),
+        'view'      => new \D3R\Monitor\View\Json(),
         'debug'     => false
     )
 );
 
-$app->add(new \D3R\Middleware\HttpBasicAuth(USERNAME, PASSWORD, REALM));
-$app->add(new \D3R\Middleware\Jsonp());
+$app->add(new \D3R\Monitor\Middleware\Jsonp());
 
 $app->error(function (\Exception $ex) use ($app) {
     $app->render($ex->getCode(), array($ex->getMessage()));
@@ -27,7 +27,7 @@ $app->get('/:module/:component', function($module, $component) use ($app) {
     {
         $$variable = ucfirst(strtolower($$variable));
     }
-    $class = '\D3R\\' . $module . '\Base';
+    $class = '\D3R\Monitor\\' . $module . '\Base';
 
     if (!class_exists($class))
     {

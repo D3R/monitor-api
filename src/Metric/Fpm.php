@@ -1,6 +1,6 @@
 <?php
 
-namespace D3R\Metric;
+namespace D3R\Monitor\Metric;
 
 class Fpm extends Base
 {

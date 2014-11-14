@@ -1,6 +1,6 @@
 <?php
 
-namespace D3R\Middleware;
+namespace D3R\Monitor\Middleware;
 
 class Jsonp extends \Slim\Middleware
 {

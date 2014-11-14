@@ -1,6 +1,6 @@
 <?php
 
-namespace D3R\Metric;
+namespace D3R\Monitor\Metric;
 
 class Disk extends Base
 {
@@ -20,7 +20,7 @@ class Disk extends Base
         {
             $data['used_perc'] = preg_replace('#[^0-9]#', '', $data['used_perc']);
         }
-        
+
         return $data;
     }
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace D3R\Configuration;
+namespace D3R\Monitor\Configuration;
 
-abstract class Base 
+abstract class Base
 {
     static public function Factory($metric)
     {
-        $class = "\\D3R\\Configuration\\" . ucfirst(strtolower($metric));
+        $class = "\\D3R\\Monitor\\Configuration\\" . ucfirst(strtolower($metric));
         if (class_exists($class))
         {
             return new $class;

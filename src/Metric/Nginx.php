@@ -1,6 +1,6 @@
 <?php
 
-namespace D3R\Metric;
+namespace D3R\Monitor\Metric;
 
 class Nginx extends Base
 {
@@ -15,11 +15,11 @@ class Nginx extends Base
     {
         /**
          * Nginx status looks like this:
-         * 
-         * Active connections: 1 
+         *
+         * Active connections: 1
          * server accepts handled requests
-         *  34073 34073 49556 
-         * Reading: 0 Writing: 1 Waiting: 0 
+         *  34073 34073 49556
+         * Reading: 0 Writing: 1 Waiting: 0
          */
 
         if (false == ($status = file_get_contents('http://localhost:81/nginx/status')))

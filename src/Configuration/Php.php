@@ -1,6 +1,6 @@
 <?php
 
-namespace D3R\Configuration;
+namespace D3R\Monitor\Configuration;
 
 class Php extends Base
 {

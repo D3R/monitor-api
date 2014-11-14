@@ -1,6 +1,24 @@
 {
+    "name": "d3r/monitor",
+    "description": "D3R Monitor API V1",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ronan Chilvers",
+            "email": "ronan@d3r.com",
+            "role": "lead"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "D3R\\Monitor\\": "src"
+            }
+    },
     "require": {
         "slim/slim": "2.*",
-        "entomb/slim-json-api": "dev-master"
+        "entomb/slim-json-api": "dev-master",
+        "symfony/console": "2.5.*",
+        "symfony/finder": "2.5.*",
+        "symfony/process": "2.5.*"
     }
 }
