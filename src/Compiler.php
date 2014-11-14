@@ -40,7 +40,6 @@ class Compiler
         $this->start = microtime(true);
         $output->writeLn('Generating phar file at ' . $pharFile);
         $output->writeLn('Starting compilation at ' . date('H:i:s'));
-        // @TODO Remove var_dump
         if (true == ini_get('phar.readonly')) {
             $this->pharWarning($output);
             return;

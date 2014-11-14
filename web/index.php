@@ -6,9 +6,9 @@ define("API_VERSION", 1);
 
 if (!isset($_SERVER['PATH_INFO'])) {
     $_SERVER['PATH_INFO'] = $_SERVER['REQUEST_URI'];
+    $_SERVER['SCRIPT_NAME'] = basename(Phar::running(false));
 }
 
-// var_dump($_SERVER); exit;
 $app = new \Slim\Slim(array(
         'view'      => new \D3R\Monitor\View\Json(),
         'debug'     => false
