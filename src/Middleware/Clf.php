@@ -18,7 +18,9 @@ class Clf extends \Slim\Middleware
             '[' . strftime('%d/%b/%Y:%H:%M:%S %z') . ']',
             '"' . $request->getMethod() . ' ' . $request->getPath() . ' HTTP/1.1"',
             $response->getStatus(),
-            $response->getLength()
+            $response->getLength(),
+            '' != $request->getReferrer() ? '"' . $request->getReferrer() . '"' : '-',
+            '' != $request->getUserAgent() ? '"' . $request->getUserAgent() . '"' : '-',
         ];
         $log->info(implode(' ', $entry));
     }
