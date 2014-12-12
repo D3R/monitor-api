@@ -4,8 +4,17 @@ namespace D3R\Monitor\Metric;
 
 class Ram extends Base
 {
+    const UNIT_BYTES     = 'b';
+    const UNIT_KILOBYTES = 'k';
+    const UNIT_MEGABYTES = 'm';
+    const UNIT_GIGABYTES = 'g';
+
     public function getData()
     {
+        $units = $this->_request->get('units');
+        if (is_null($units)) {
+            $units = static::UNIT_BYTES;
+        }
         if (false == ($data = file_get_contents('/proc/meminfo')))
         {
             throw new Exception("Unable to get memory info");
@@ -13,15 +22,22 @@ class Ram extends Base
 
         $data = static::_parseMeminfo($data);
 
-        return array(
-            "total" => $data['MemTotal'],
-            "free" => $data['MemFree'] + $data['Buffers'] + $data['Cached'],
-            "used" => $data['MemTotal'] - ($data['MemFree'] + $data['Buffers'] + $data['Cached']),
-            "perc_free" => ($data['MemFree'] + $data['Buffers'] + $data['Cached']) / $data['MemTotal'] * 100,
-            "swap_total" => $data['SwapTotal'],
-            "swap_free" => $data['SwapFree'],
+        $output = array(
+            "total"          => $data['MemTotal'],
+            "free"           => $data['MemFree'] + $data['Buffers'] + $data['Cached'],
+            "used"           => $data['MemTotal'] - ($data['MemFree'] + $data['Buffers'] + $data['Cached']),
+            "perc_free"      => ($data['MemFree'] + $data['Buffers'] + $data['Cached']) / $data['MemTotal'] * 100,
+            "swap_total"     => $data['SwapTotal'],
+            "swap_free"      => $data['SwapFree'],
             "swap_perc_free" => $data['SwapFree'] / $data['SwapTotal'] * 100,
         );
+
+        foreach ($output as $key => &$value) {
+            if ($key == "swap_perc_free" || $key == "perc_free") { continue; }
+            $value = $this->_formatNumber($value, $units);
+        }
+
+        return $output;
     }
 
     protected function _parseMeminfo($raw)
@@ -38,6 +54,28 @@ class Ram extends Base
             $data[$label] = static::_toBytes($unit, $value);
         }
         return $data;
+    }
+
+    protected function _formatNumber($number, $units)
+    {
+        switch ($units) {
+            case static::UNIT_GIGABYTES:
+                return $number / 1024 / 1024 / 1024;
+                break;
+
+            case static::UNIT_MEGABYTES:
+                return $number / 1024 / 1024;
+                break;
+
+            case static::UNIT_KILOBYTES:
+                return $number / 1024;
+                break;
+
+            case static::UNIT_BYTES:
+            default:
+                return $number;
+                break;
+        }
     }
 
     protected function _toBytes($unit, $value)
