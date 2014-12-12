@@ -12,11 +12,13 @@ class Packages extends Base
             'php5',
             'redis-server',
             'memcached',
+            'd3r-tools',
         );
 
     public function getData()
     {
         $data = [];
+        sort($this->packages);
         foreach ($this->packages as $package) {
             $data[$package] = $this->getInstalledVersion($package);
         }
@@ -31,7 +33,7 @@ class Packages extends Base
         exec($cmd, $output, $return);
 
         if (0 < $return) {
-            return 'unknown';
+            return 'error';
         }
 
         foreach ($output as $line) {
@@ -39,12 +41,12 @@ class Packages extends Base
             if (isset($matches[1])) {
                 $version = trim($matches[1]);
                 if ('(none)' == $version) {
-                    return 'not installed';
+                    return 'none';
                 }
                 return $version;
             }
         }
 
-        return 'unknown';
+        return 'none';
     }
 }
