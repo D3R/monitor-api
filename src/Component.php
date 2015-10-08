@@ -15,7 +15,7 @@ abstract class Component
             $obj->_setRequest($request);
             return $obj;
         }
-        throw new \Exception("Invalid component {$module}\{$component}", 400);
+        throw new \Exception("Invalid component {$module}\\{$component}", 400);
     }
 
     protected $_request;
