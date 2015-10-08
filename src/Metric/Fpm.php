@@ -2,7 +2,9 @@
 
 namespace D3R\Monitor\Metric;
 
-class Fpm extends Base
+use D3R\Monitor\Component;
+
+class Fpm extends Component
 {
     public function getData()
     {

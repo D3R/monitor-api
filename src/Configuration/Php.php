@@ -2,7 +2,9 @@
 
 namespace D3R\Monitor\Configuration;
 
-class Php extends Base
+use D3R\Monitor\Component;
+
+class Php extends Component
 {
 
     protected $_params = array(

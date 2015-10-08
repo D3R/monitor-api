@@ -4,7 +4,7 @@ namespace D3R\Monitor\View;
 
 class Json extends \Slim\View
 {
-    public function render($status)
+    public function render($status, $data = null)
     {
         $app = \Slim\Slim::getInstance();
 

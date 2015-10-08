@@ -2,7 +2,9 @@
 
 namespace D3R\Monitor\Metric;
 
-class Ram extends Base
+use D3R\Monitor\Component;
+
+class Ram extends Component
 {
     const UNIT_BYTES     = 'b';
     const UNIT_KILOBYTES = 'k';

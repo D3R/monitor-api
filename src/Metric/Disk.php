@@ -2,7 +2,9 @@
 
 namespace D3R\Monitor\Metric;
 
-class Disk extends Base
+use D3R\Monitor\Component;
+
+class Disk extends Component
 {
     public function getData()
     {

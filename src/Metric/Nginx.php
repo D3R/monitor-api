@@ -2,7 +2,9 @@
 
 namespace D3R\Monitor\Metric;
 
-class Nginx extends Base
+use D3R\Monitor\Component;
+
+class Nginx extends Component
 {
     public function getData()
     {

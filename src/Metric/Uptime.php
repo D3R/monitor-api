@@ -2,7 +2,9 @@
 
 namespace D3R\Monitor\Metric;
 
-class Uptime extends Base
+use D3R\Monitor\Component;
+
+class Uptime extends Component
 {
     public function getData()
     {

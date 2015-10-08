@@ -2,7 +2,9 @@
 
 namespace D3R\Monitor\Metric;
 
-class Load extends Base
+use D3R\Monitor\Component;
+
+class Load extends Component
 {
     public function getData()
     {

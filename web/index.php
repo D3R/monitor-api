@@ -33,14 +33,14 @@ $app->get('/:module/:component', function($module, $component) use ($app) {
     {
         $$variable = ucfirst(strtolower($$variable));
     }
-    $class = '\D3R\Monitor\\' . $module . '\Base';
+    $class = '\D3R\Monitor\Component';
 
     if (!class_exists($class))
     {
         throw new \Exception("Invalid module", 400);
     }
 
-    $obj = $class::Factory($component, $app->request);
+    $obj = $class::Factory($module, $component, $app->request);
     $app->render(200, $obj->getData());
 });
 

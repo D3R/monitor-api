@@ -2,24 +2,31 @@
 
 namespace D3R\Monitor\Configuration;
 
-class Packages extends Base
+use D3R\Monitor\Component;
+
+class Packages extends Component
 {
     protected $packages = array(
             'nginx',
             'apache2',
-            'mysql-server',
+            'mysql-server-5.6',
             'elasticsearch',
-            'php5',
+            'php5-fpm',
             'redis-server',
-            'memcached',
-            'd3r-tools',
         );
 
     public function getData()
     {
-        $data = [];
-        sort($this->packages);
-        foreach ($this->packages as $package) {
+        $data     = [];
+        $packages = [];
+        if (null == ($package = $this->_request->get('package'))) {
+            $packages = $this->packages;
+        } else {
+            $packages[] = $package;
+        }
+
+        sort($packages);
+        foreach ($packages as $package) {
             $data[$package] = $this->getInstalledVersion($package);
         }
 
