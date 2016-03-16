@@ -24,7 +24,7 @@ class Nginx extends Component
          * Reading: 0 Writing: 1 Waiting: 0
          */
 
-        if (false == ($status = file_get_contents('http://localhost:81/nginx/status')))
+        if (false == ($status = @file_get_contents('http://localhost:81/nginx/status')))
         {
             throw new \Exception("Error reading nginx stats", 500);
         }

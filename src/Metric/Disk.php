@@ -34,7 +34,6 @@ class Disk extends Component
         $raw = array();
         $return = null;
         exec($command, $raw, $return);
-
         if (0 < $return)
         {
             return false;

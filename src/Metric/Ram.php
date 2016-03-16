@@ -17,9 +17,9 @@ class Ram extends Component
         if (is_null($units)) {
             $units = static::UNIT_BYTES;
         }
-        if (false == ($data = file_get_contents('/proc/meminfo')))
+        if (false == ($data = @file_get_contents('/proc/meminfo')))
         {
-            throw new Exception("Unable to get memory info");
+            throw new \Exception("Unable to get memory info", 500);
         }
 
         $data = static::_parseMeminfo($data);

@@ -8,10 +8,10 @@ class Uptime extends Component
 {
     public function getData()
     {
-        $uptime = file_get_contents('/proc/uptime');
+        $uptime = @file_get_contents('/proc/uptime');
         if (false == $uptime)
         {
-            throw new Exception("Unable to get uptime");
+            throw new \Exception("Unable to get uptime", 500);
         }
 
         list($all, $idle) = explode(" ", trim($uptime), 2);

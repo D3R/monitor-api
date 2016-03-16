@@ -8,8 +8,14 @@ class Fpm extends Component
 {
     public function getData()
     {
-        $status = file_get_contents('http://localhost:81/fpm/status?json');
+        $status = @file_get_contents('http://localhost:81/fpm/status?json');
+        if (false === $status) {
+            throw new \Exception('Unable to get status data', 500);
+        }
         $status = (array) json_decode($status);
+        if (false === $status) {
+            throw new \Exception('Unable to parse status data', 500);
+        }
 
         $data = array();
         foreach ($status as $key => $value)
