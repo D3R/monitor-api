@@ -26,5 +26,11 @@
         "symfony/console": "2.5.*",
         "symfony/finder": "2.5.*",
         "symfony/process": "2.5.*"
+    },
+    "scripts": {
+        "serve": [
+            "echo 'Starting development server on http://localhost:9000'",
+            "cd web && php -S localhost:9000 index.php"
+        ]
     }
 }
