@@ -1,0 +1,14 @@
+name: monitor-api
+id: ari:cloud:compass:99f81cd3-6055-4ddd-97a3-655f84dd430a:component/a6a6633a-8303-46fd-94f0-c5635a90b6ba/2e7e4f99-ba65-4b06-8543-6b9d85709897
+description: null
+configVersion: 1
+typeId: SERVICE
+fields:
+  tier: 4
+links: []
+relationships:
+  DEPENDS_ON: []
+labels:
+  - language:php
+  - source:github
+customFields: null
